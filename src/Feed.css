@@ -1,0 +1,31 @@
+.Feed{
+    flex : 0.5;
+    border-right : 1px solid  var(--twitter-space-col);
+    min-width: fit-content;
+    overflow-y: scroll;
+    -ms-overflow-style : none;
+    scrollbar-width: none;
+}
+.Feed::-webkit-scrollbar{
+    display: none;
+}
+.Feed_header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid  var(--twitter-space-col);
+}
+.Feed_header--container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem
+}
+.Feed_header--container h2{
+    font-weight: 800;
+    font-size : 1.15rem;
+    align-self: center;
+}
+.Feed_header--container svg{
+    width : 1.2rem;
+    fill : var(--twitter-def-col);
+}

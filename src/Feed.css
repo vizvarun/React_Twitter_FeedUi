@@ -1,7 +1,7 @@
 .Feed{
-    flex : 0.5;
+    flex : 0.4;
     border-right : 1px solid  var(--twitter-space-col);
-    min-width: fit-content;
+    min-width: max-content;
     overflow-y: scroll;
     -ms-overflow-style : none;
     scrollbar-width: none;
@@ -14,6 +14,7 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid  var(--twitter-space-col);
+    background-color: var(--twitter-bg-def);
 }
 .Feed_header--container{
     display: flex;
@@ -26,6 +27,6 @@
     align-self: center;
 }
 .Feed_header--container svg{
-    width : 1.2rem;
+    width : 1.3rem;
     fill : var(--twitter-def-col);
 }

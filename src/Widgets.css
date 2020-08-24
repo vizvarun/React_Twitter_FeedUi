@@ -1,0 +1,180 @@
+.Widgets{
+    flex : 0.3;
+    margin: 0 1rem;
+    overflow-y: scroll;
+    -ms-overflow-style : none;
+    scrollbar-width: none;
+}
+.Widgets::-webkit-scrollbar{
+    width: none;
+}
+.Widgets .Widgets-inp{
+    background-color: var(--twitter-space-col);
+    display: flex;
+    align-items: center;
+    margin-top:0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+.Widgets .Widgets-inp svg{
+    width:1.1rem;
+    margin: 0 0.5rem;
+}
+.Widgets .Widgets-inp input{
+    background-color: var(--twitter-space-col);
+    border : none;
+    outline: none;
+    color: gray;
+    width: 100%;
+}
+.Widgets .Widgets-widgetcontainer{
+    margin-top: 1rem;
+    background-color: var(--twitter-space-col);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.Widgets .Widgets-widgetcontainer h2{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    margin-left: 0.8rem;
+}
+.Widgets .Widgets-widgetcontainer .Widgets-widgetcontainer--footer{
+    border-radius: 0 0 1rem 1rem;
+    color : var(--twitter-def-col);
+    border-top: 1px solid var(--twitter-space-coldark);
+    padding: 0.8rem 0;
+}
+.Widgets .Widgets-widgetcontainer .Widgets-widgetcontainer--footer span{
+    margin-left: 0.8rem;
+    font-size: 0.9rem;
+}
+.Widgets .Widgets-widgetcontainer .widget{
+    display : grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: repeat(3,min-content);
+    justify-content: space-between;
+    width:100%;
+    cursor: pointer;
+    border-top: 1px solid var(--twitter-space-coldark);
+    grid-gap: 0.2rem 0.3rem;
+    padding: 0.3rem 0;
+}
+.Widgets .Widgets-widgetcontainer .widget:hover{
+    background-color: var(--twitter-space-coldark);
+    transition: background-color 300ms ease-out all;
+}
+
+.Widgets .Widgets-widgetcontainer .widget h5{
+    color : gray;
+    font-weight: 400;
+    margin-left: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+.Widgets .Widgets-widgetcontainer .widget .widget-header{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin-left: 0.5rem;
+}
+.Widgets .Widgets-widgetcontainer .widget .widget-info{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    margin-right: 0.8rem;
+}
+.Widgets .Widgets-widgetcontainer .widget h4{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+.Widgets .Widgets-widgetcontainer .widget .widget-footer{
+    grid-column: 1/2;
+    grid-row: 3/4;
+    margin-left: 0.5rem;
+}
+
+/*Whomm toFollow*/
+
+.Widgets  .WhomToFollow-widget h2{
+
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    margin-left: 0.8rem;
+}
+
+.Widgets  .WhomToFollow-widget  .WhomToFollow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    grid-column-gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-top : 1px solid var( --twitter-space-coldark);
+    cursor: pointer;
+}
+.Widgets  .WhomToFollow-widget  .WhomToFollow:hover{
+    background-color: var( --twitter-space-coldark);
+}
+.Widgets  .WhomToFollow-widget  .WhomToFollow-header{
+    margin-left: 0.8rem;
+    justify-self: 0.1;
+}
+
+.Widgets  .WhomToFollow-widget  .WhomToFollow-content{
+    flex : 1;
+    justify-self: flex-start;
+}
+.Widgets  .WhomToFollow-widget  .WhomToFollow-content h6{
+    color : gray;
+    font-weight: 400;
+    margin-top: 0.8rem;
+}
+.Widgets  .WhomToFollow-widget  .WhomToFollow-content .WhomToFollow-userName{
+    color : gray;
+    font-weight: 400;
+}
+
+.Widgets  .WhomToFollow-widget  .WhomToFollow-btn{
+    flex : 0.2;
+    margin-right: 0.8rem;
+}
+.Widgets  .WhomToFollow-widget .Widgets-widgetcontainer--footer
+{
+    padding: 0.8rem 0;
+    color : var(--twitter-def-col);
+    border-top: 1px solid var(--twitter-space-coldark);
+    padding: 0.8rem 0;
+}
+.Widgets  .WhomToFollow-widget .Widgets-widgetcontainer--footer span{
+    margin-left: 0.8rem;
+    font-size: 0.9rem;
+}
+.Widgets  .WhomToFollow-widget h5{
+    font-size: 0.9rem;
+}
+
+
+.Widgets .Widgets-Footer{
+    font-size: 0.8rem;
+    color:gray;
+    margin: 1.3rem 0;
+}
+
+.Widgets .Widgets-Footer ul{
+    display: flex;
+    list-style: none;
+    grid-gap: 0.6rem;
+    margin-left: -2rem;
+}
+.Widgets .Widgets-Footer ul li{
+    cursor : pointer;
+}
+.Widgets .Widgets-Footer h5{
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+    padding: 0.3rem 0;
+}

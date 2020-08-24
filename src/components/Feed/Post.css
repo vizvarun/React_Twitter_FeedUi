@@ -1,0 +1,87 @@
+.Post{
+    border-bottom: 1px solid var(--twitter-space-col);
+    padding-bottom: 1rem;
+    width: max-content;
+    display: flex;
+    align-items: flex-start;
+}
+.Post .Post_avatar{
+    padding: 0.8rem;
+    width: max-content;
+}
+.Post .Post_body{
+    padding: 0.8rem 1rem 0.5rem 0;
+}
+.Post .Post_body .Post_header .Post_headerText {
+    display: flex;
+    justify-content: space-between;
+}
+.Post .Post_body .Post_header .Post_headerText .Post_header--info{
+    font-weight: 400;
+    font-size: 1rem;
+    color: grey;
+}
+.Post .Post_body .Post_header .Post_headerText .Post_header--info  .Post_header--info_timeStamps{
+    margin: 0 0.5rem;
+    font-size: 0.9rem; 
+}
+.Post .Post_body .Post_header .Post_headerText .Post_headerText--dropDown {
+    cursor: pointer;
+    width: 1rem;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+}
+.Post .Post_body .Post_header .Post_headerText .Post_headerText--dropDown svg{
+    fill : gray;
+}
+.Post .Post_body .Post_header .Post_headerText .Post_headerText--dropDown:hover{
+    background-color: var(--twitter-def-hover);
+    fill : var(--twitter-def-col)
+} 
+.Post .Post_body .Post_header .Post_headDesc{
+    padding: 0.15rem 0 0.3rem 0 ;
+}
+.Post .Post_body .Post_header .HashTags{
+    margin: 0.8rem 0 0.6rem 0;
+    font-size: 0.9rem;
+}
+.Post .Post_body .Post_header .Post_headDesc p{
+   font-size: 0.9rem;
+   max-width: 30rem;
+}
+.Post .Post_body .Post_footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    width: 70%;
+    color : gray;
+    fill : gray;
+}
+.Post .Post_body .Post_footer .Post_footer--item{
+    color : gray;
+    fill : gray;
+    font-weight: 300;
+}
+.Post .Post_body .Post_footer svg{
+    width : 1rem; 
+}
+.Post .Post_body .Post_item {
+    display: grid;
+}
+.Post .Post_body .Post_item img{
+    border-radius: 1rem;
+    max-width: 100%;
+    grid-row: 1/3;
+    grid-column: 1/-1;
+}
+
+.Post .Post_body .Post_item h5{
+    grid-row: 2/3;
+    grid-column: 1/2;
+    position: relative;
+    top: -0.5rem;
+    left: 1rem;
+}
+

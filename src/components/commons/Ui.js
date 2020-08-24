@@ -1,12 +1,11 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import { Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Dropdown, Mutual, Promoted, VerifiedUserIcon } from './Icons'
+import IconButton from '@material-ui/core/IconButton';
+
 
 export const ProfileMenu = ({ButtonChildren,MenuChildren,btnClass}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -51,58 +50,154 @@ export const FollowUp = ({Image,SomeProp,name,idname,newClass}) =>{
         <>
             <Avatar src={Image} alt="Name" className={`${newClass}-img`} />
             <div className={`${newClass}-name--container`}>
-              <div className={`${newClass}-name`}>{name}</div>
-              <div className={`${newClass}-idname`}>{idname}</div>
+              <h4 className={`${newClass}-name`}>{name}</h4>
+              <h5 className={`${newClass}-idname`}>{idname}</h5>
             </div>
             {SomeProp}
         </>
     )
 }
 
-
-const useStyles = makeStyles((theme) => ({
+const WidgetsStyles = makeStyles((theme) => ({
+  Widgetroot: {
+    width: '100%',
+    marginTop: '1rem',
+    backgroundColor: 'var(--twitter-space-col)',
+    borderRadius: '1rem',
+  }
+}));
+export const WidgetContainer = ({children,moreClass,header}) =>{
+  const styles = WidgetsStyles();
+  return(
+    <div className={`${styles.Widgetroot} ${moreClass}`}>
+        <h2>{header}</h2>
+        {children}
+        <div className="Widgets-widgetcontainer--footer">
+          <span>Show more</span>
+        </div>
+    </div>
+  )
+}
+const IndividualWidgets= makeStyles((theme) => ({
   root: {
     width: '100%',
-    position: 'absolute',
-    bottom : 0,
-    left: 0
   },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
-    flexShrink: 0,
+  rounded : {
+      width: theme.spacing(7),
+      height: theme.spacing(7),
+      color: '#fff',
+      borderRadius : '1rem'
   },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
+  followBtn : {
+    padding : '0.3rem 1rem',
+    outline : 'none',
+    border: '1px solid var(--twitter-def-col)',
+    borderRadius : '1.5rem',
+    color : "var(--twitter-def-col)",
+    cursor : 'pointer',
+    fontWeight : 800,
+    '&:hover' : {
+      backgroundColor : 'var(--twitter-def-hover)'
+    }
+  }
 }));
-
-export const ControlledAccordions = ({ButtonChildren,MenuChildren,IconExpand}) => {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
-  return (
-    <div className={classes.root}>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} className={`Profile`} style={{
-        borderRadius : '30px',
-        boxShadow : 'none'
-      }}>
-        <AccordionSummary
-          expandIcon={IconExpand}
-          aria-controls="panel2bh-content"
-          id="panel2bh-header"
-        >
-        {ButtonChildren}
-        </AccordionSummary>
-        <AccordionDetails>
-          {MenuChildren}
-        </AccordionDetails>
-      </Accordion>
+export const Widget = ({Topic,type,tweets,trending,TrendingHash,avatarSrc}) => {
+  const styles = IndividualWidgets();
+  const numeralCheck = (numeral) => {
+        if(numeral<10000){
+          return `${numeral} Tweets`;
+        }
+        else if(numeral > 10000 && numeral <1000000){
+          return `${(numeral/1000).toFixed(1)}K Tweets`
+        }
+        else if(numeral > 1000000){
+          return `${(numeral/1000000).toFixed(2)}M Tweets`
+        }
+   }
+  return(
+    <div className={`${styles.root} widget`}>
+        <div className="widget-header">
+          <h5>
+            <span>{Topic}</span>{' '}
+            {type ? <span>&middot;{' '}{type}</span> : null}
+          </h5>
+          <h4>{TrendingHash}</h4>
+        <h5 className="widget-footer">
+          {
+            tweets ? <span>{numeralCheck(tweets)}</span> : 
+            trending ? <span>Trending with:
+              <span style={{color : 'var(--twitter-def-col'}}>#{trending}</span>
+            </span>:
+            null
+          }
+        </h5>
+        </div>
+        <div className="widget-info">
+          {avatarSrc ?<Avatar 
+          variant='rounded' 
+          className={`${styles.rounded} widget-avatar`}
+          src={avatarSrc} 
+          /> : <Dropdown width={'1rem'}/>}
+        </div>
     </div>
-  );
+  )
+}
+export const WhomToFollow = ({avatarSrc,mutual,AccName,userName,promoted,verified}) => {
+  const [followState,setState] = React.useState('Follow')
+  const styles = IndividualWidgets();
+  return(
+    <div className="WhomToFollow">
+        <div className="WhomToFollow-header">
+          {mutual? <Mutual width={'1rem'}/> : null}
+          <Avatar src={avatarSrc} className="WhomToFollow-header_avatar" />
+        </div>
+        <div className="WhomToFollow-content">
+          {mutual?<h5>{mutual}</h5> : null}
+          <h5>{AccName} {verified ?<VerifiedUserIcon />:null}</h5>
+          <h5 className="WhomToFollow-userName">@{userName}</h5>
+          {mutual?<p>{describe}</p>: promoted ? <h6><Promoted /> Promoted</h6> : null}
+        </div>
+        <div className="WhomToFollow-btn">
+          <button 
+          className={styles.followBtn}
+          style={{
+            backgroundColor : followState === 'Following' ? 
+            'var(--twitter-def-col)' : null,
+            color : followState === 'Following' ? 
+            'var(--twitter-bg-def)' : null
+          }}
+          onClick={() => followState === 'Follow' ? 
+          setState('Following'): followState === 'Following' ? 
+          setState('Follow'):followState}>
+              {followState}
+          </button>
+        </div>
+    </div>
+  )
+}
+const BtnStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(0.3)
+  }
+}));
+export const IconButtonMaker = ({children}) => {
+  const styles = BtnStyles();
+  return(
+    <IconButton aria-label="delete" className={styles.margin} size="small">
+          {children}
+      </IconButton>
+  )
+}
+
+export const useWindowResizer = () => {
+  const [resize,setResize] = React.useState([window.innerWidth,window.innerHeight])
+  const resizehandler = () => {
+    setResize([window.innerWidth,window.innerHeight]);
+  }
+  React.useLayoutEffect(() => {
+    window.addEventListener('resize',resizehandler);
+    return () => window.removeEventListener('resize',resizehandler)
+  },[]);
+
+  return resize;
 }

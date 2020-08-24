@@ -1,7 +1,8 @@
 body{
     --twitter-def-col : #1DA1F2;
     --twitter-def-hover :  #E8F5FE;
-    --twitter-space-col : #E6ECF0;
+    --twitter-space-col : #EDF0F2;
+    --twitter-space-coldark : #dfe6eb;
     --twitter-bg-def: white;
     --twitter-bg-dim : #15202B;
     --twitter-bg-dark : #000000;

@@ -1,0 +1,134 @@
+.Tweetbox{
+    padding : 1rem 1rem 0.1rem 0.8rem;
+    border-bottom: 0.6rem solid var(--twitter-space-col);
+}
+.Tweetbox > form{
+    display: flex;
+    flex-direction: column;
+}
+.Tweetbox form{
+    display: grid;
+    grid-template-rows: repeat(4,max-content);
+    grid-template-columns: max-content 1fr;
+}
+.Tweetbox form .Tweetbox-upload{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: center;
+    height: 300px;
+    width: 500px;
+    overflow: hidden;
+    border-radius: 1rem;
+    display: grid;
+}
+.Tweetbox form .Tweetbox-upload > img{
+    width: 100%;
+    height: auto;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+}
+.Tweetbox form .Tweetbox-upload .Tweet-upload--close{
+    background-color: rgba(0, 0, 0, 0.767);
+    align-self: start;
+    justify-self: start;
+    z-index: 200;
+    margin: 0.5rem 0 0 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    cursor: pointer;
+}
+.Tweetbox form .Tweetbox-upload .Tweet-upload--close svg{
+    fill : white;
+}
+.Tweetbox form .Tweetbox_input {
+    align-self: center;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.Tweetbox form .Tweetbox_input--way{
+    display : flex;
+    grid-column: 2/3;
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem;
+    grid-column-gap: 0.3rem;
+    color: var(--twitter-def-col);
+    border-bottom: 1px solid var(--twitter-space-col);
+}
+.Tweetbox form .Tweetbox_input--way svg{
+    fill : var(--twitter-def-col);
+    width : 1.1rem;
+    align-self: flex-end;
+}
+.Tweetbox form .Tweetbox_input input{
+    outline: none;
+    border:none;
+    font-size: 1.1rem;
+    height: fit-content;
+}
+.Tweetbox form .Tweetbox_input input::placeholder{
+    color : rgba(0, 0, 0, 0.582)
+}
+.Tweetbox form .Tweetbox_input input:focus::-webkit-input-placeholder{
+    color :  rgba(0, 0, 0, 0.404);
+}
+.Tweetbox form .Tweetbox_input input:focus::-webkit-input-placeholder{
+    color :  rgba(0, 0, 0, 0.404);
+}
+.Tweetbox form .Tweetbox_input input:focus:-moz-placeholder {
+    color: rgba(0, 0, 0, 0.404);
+}
+
+.Tweetbox form .Tweetbox_input input:focus::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.404);
+}
+.Tweetbox form .Tweetbox_input input:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.404);
+}
+
+.Tweetbox .Tweet_Functions{
+    display: flex;
+    grid-column: 2/3;
+    justify-content: space-between;
+}
+.Tweetbox .Tweet_Functions .Tweet_Functions--container {
+    align-self: center;
+    display: flex;
+}
+.Tweetbox .Tweet_Functions .Tweet_Functions--container .Tweet_Functions--icon{
+    cursor: pointer;
+    width: 1.3rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+}
+.Tweetbox .Tweet_Functions .Tweet_Functions--container .Tweet_Functions--icon svg{
+    width: 1.3rem;
+    fill: var(--twitter-def-col);
+}
+.Tweetbox .Tweet_Functions .Tweet_Functions--container .Tweet_Functions--icon:hover{
+    background-color: var(--twitter-def-hover);
+}
+.Tweetbox .Tweet_Functions .Tweet_Button{
+    background-color: var(--twitter-def-col);
+    padding: 0.4rem 1rem;
+    align-self: center;
+    text-transform: inherit !important;
+    color: var(--twitter-bg-def);
+    border-radius: 30px;
+    margin-bottom: 0.3rem;
+}
+.Tweetbox .Tweet_Functions .Tweet_Button:disabled{
+    opacity: 0.5;
+}
+
+
+
+
+
+
+

@@ -1,53 +1,42 @@
 import React from 'react'
 import './Sidebar.css'
 import SidebarOption from './components/Sidebar/SidebarOptions.component'
-import {  Dropdown,MoreDropDown,SidebarIcons, TwitterIcon } from './components/commons/Icons'
-import { Button,MenuItem } from '@material-ui/core'
-import { FollowUp, ProfileMenu,ControlledAccordions } from './components/commons/Ui'
+import {  Dropdown,SidebarIcons, TweetBtn, TwitterIcon } from './components/commons/Icons'
+import { Avatar, Button} from '@material-ui/core'
+import { FollowUp, PositionedPopper, useWindowResizer } from './components/commons/Ui'
 import AccountPic from './static/images/Accountpic.webp'
 const Sidebar = () => {
+    const [width,height] = useWindowResizer();
     let SidebarOpt = [];
     for(let [key,value] of Object.entries(SidebarIcons))
     {
         SidebarOpt.push(<SidebarOption 
             Icon={value} 
-            name={key} 
+            name={width > 1310 ? key : null} 
             key={key} 
             active={key === 'Home' ? true : false}/>)
     } 
     return (
         <div className="Sidebar">
-            {TwitterIcon}
+            <div className="Twitter-header_icon"><TwitterIcon /></div>
             {SidebarOpt}
-            <ProfileMenu
-            ButtonChildren={
-                <>
-                    {MoreDropDown}
-                    <h2>More</h2>
-                </>
-            }/>
-            <Button
+            {width > 1310 ? <Button
             variant="outlined" 
-            fullWidth 
-            className="Sidebar--Tweet-btn">Tweet</Button>
-            <ControlledAccordions
-            IconExpand={Dropdown}  
-            ButtonChildren={
+            fullWidth
+            className="Sidebar--Tweet-btn">Tweet</Button> :  
+            <div className="Mobile-view--tweet"><TweetBtn /></div>}
+             <Button
+            variant="outlined" 
+            fullWidth
+            className="ProfileButton">
                 <FollowUp 
                 Image={AccountPic}
+                newClass={'Profile'}
                 name={'Sayantan Samanta'}
                 idname={'@icegeek_07'}
-                newClass={'Profile'}
+                SomeProp={<Dropdown width="1rem" />}
                 />
-            }
-            MenuChildren={
-               <div className="ProfileInfo">
-                <MenuItem>Helllo</MenuItem>
-                <MenuItem>Helllo</MenuItem>
-                <MenuItem>Helllo</MenuItem>
-               </div>
-            }
-            />
+            </Button>
         </div>
     )
 }

@@ -15,18 +15,38 @@
     z-index: 100;
     border-bottom: 1px solid  var(--twitter-space-col);
     background-color: var(--twitter-bg-def);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--twitter-space-coldark);
 }
 .Feed_header--container{
     display: flex;
     justify-content: space-between;
-    margin: 0 1rem
+    margin: 0 1rem;
 }
 .Feed_header--container h2{
     font-weight: 800;
     font-size : 1.15rem;
     align-self: center;
 }
+.Feed_header--container .Header-svg{
+    width : 1.3rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.Feed_header--container .Header-svg:hover{
+    background-color: var(--twitter-def-hover);
+}
 .Feed_header--container svg{
     width : 1.3rem;
     fill : var(--twitter-def-col);
+}
+@media only screen and (max-width : 670px){
+    .Feed{
+        min-width: 20rem;
+        position: relative;
+        flex: 1;
+    }
 }

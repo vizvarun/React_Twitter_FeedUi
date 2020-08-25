@@ -1,6 +1,6 @@
-import { IconButton } from '@material-ui/core'
 import React from 'react'
 import { TweetFirst,userPostsIcons } from './components/commons/Icons'
+import { useWindowResizer } from './components/commons/Ui'
 import Post from './components/Feed/Post.component'
 import Tweetbox from './components/Feed/Tweetbox.component'
 import './Feed.css'
@@ -17,16 +17,18 @@ const Feed = () => {
         }))
       })
    },[])
+   const [width] = useWindowResizer()
+   console.log(width);
    const PostRef = React.useRef(null);
     return (
         <div className="Feed">
            <div className="Feed_header">
                 <div className="Feed_header--container">
                     <h2>Home</h2>
-                    <IconButton>{TweetFirst}</IconButton>
+                    <div className="Header-svg">{TweetFirst}</div>
                 </div>
            </div>
-           <Tweetbox />
+           {width > 430 ? <Tweetbox /> : null}
             {
                posts.map(post => {
                 return <Post

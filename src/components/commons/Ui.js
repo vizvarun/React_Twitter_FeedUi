@@ -4,7 +4,8 @@ import { Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Dropdown, Mutual, Promoted, VerifiedUserIcon } from './Icons'
-import IconButton from '@material-ui/core/IconButton';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 
 export const ProfileMenu = ({ButtonChildren,MenuChildren,btnClass}) => {
@@ -175,19 +176,36 @@ export const WhomToFollow = ({avatarSrc,mutual,AccName,userName,promoted,verifie
     </div>
   )
 }
-const BtnStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(0.3)
-  }
-}));
-export const IconButtonMaker = ({children}) => {
-  const styles = BtnStyles();
-  return(
-    <IconButton aria-label="delete" className={styles.margin} size="small">
-          {children}
-      </IconButton>
-  )
+
+const useNavStyles = makeStyles({
+  root: {
+    width: 'auto',
+  },
+});
+
+export default function LabelBottomNavigation({IconSet}) {
+  const classes = useNavStyles();
+  const [value, setValue] = React.useState('recents');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <BottomNavigation value={value} onChange={handleChange} className={`${classes.root} Bottom-nav`}>
+        {
+          IconSet.map((Icon,id) =>{
+            return <BottomNavigationAction 
+            key={id} 
+            value="recents" 
+            icon={<Icon />} />
+          })
+        }
+    </BottomNavigation>
+  );
 }
+
+
 
 export const useWindowResizer = () => {
   const [resize,setResize] = React.useState([window.innerWidth,window.innerHeight])

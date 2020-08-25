@@ -4,9 +4,11 @@
     overflow-y: scroll;
     -ms-overflow-style : none;
     scrollbar-width: none;
+    min-width: 20rem;
+    position: relative;
 }
 .Widgets::-webkit-scrollbar{
-    width: none;
+    display: none;
 }
 .Widgets .Widgets-inp{
     background-color: var(--twitter-space-col);

@@ -49,9 +49,9 @@ const Post = React.forwardRef(({userAvatar,
                 borderRadius: '0.3rem'
             }}>GIF</h5>)
         }
-        else{
-            setPost(null)
-        }
+        else if(ImageRef.current.src === null){
+                ImageRef.current.src = 'post'
+            }
     },[])
     const [mathCounter,setCounter] = React.useState({
         comment : commentNo,
@@ -90,7 +90,7 @@ const Post = React.forwardRef(({userAvatar,
                         <h4>{posterName}{" "}
                             <span className="Post_header--info">
                                 {verified ? <VerifiedUserIcon/> : null }
-                                {' '}@{userName}&nbsp;&nbsp;&nbsp;&nbsp;&middot;
+                                {' '}@{userName}&nbsp;&nbsp;&middot;
                                 <span className="Post_header--info_timeStamps">{RandomTimers.timeStamps}h</span>
                             </span>
                         </h4>

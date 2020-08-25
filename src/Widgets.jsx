@@ -32,8 +32,6 @@ const Widgets = () => {
             }))
         })
     },[])
-    const [width,height] = useWindowResizer();
-    console.log(height)
     const FooterCompos = ['Terms','Privacy Policy','Cookies','Add Info','More']
     return (
         <div className="Widgets">

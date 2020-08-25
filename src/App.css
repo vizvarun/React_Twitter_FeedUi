@@ -7,10 +7,40 @@ body{
     --twitter-bg-dim : #15202B;
     --twitter-bg-dark : #000000;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
+    font-size: 100%;
 }
 .App{
     display: flex;
     height: 100vh;
     max-width: 1300px;
     margin: 0 auto;
+}
+.Tweet-Btn{
+    position: fixed;
+    bottom: 4rem;
+    right: 1rem;
+    background-color: var(--twitter-def-col);
+    padding: 1rem;
+    border-radius: 50%;
+    width : 1.5rem;
+    fill : var(--twitter-bg-def);
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.185);
+    cursor: pointer;
+}
+.Mobile-Twitter-nav{
+    position : fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top : 1px solid var(--twitter-space-coldark)
+}
+.Mobile-Twitter-nav .Bottom-nav svg{
+    width : 1.5rem;
+    fill : gray;
+}
+
+.active{
+    fill : var(--twitter-def-col)
 }

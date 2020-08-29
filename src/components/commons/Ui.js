@@ -1,63 +1,12 @@
 import React from 'react';
-import Menu from '@material-ui/core/Menu';
 import { Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { Dropdown, Mutual, Promoted, VerifiedUserIcon } from './Icons'
+import { DataSaver, Display, Dropdown, HelpCenter, Mutual, Promoted, SettPriv, VerifiedUserIcon } from './Icons'
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Modal from '@material-ui/core/Modal';
+import { Profile,Lists, Topics, Bookmark, Moments, Analytics, TwitterAds } from './Icons'
 
-
-export const ProfileMenu = ({ButtonChildren,MenuChildren,btnClass}) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <div className="Sidebar-option"  style={{
-      borderRadius : '30px'
-    }}>
-      <Button 
-      aria-controls="simple-menu" 
-      aria-haspopup="true" 
-      onClick={handleClick} 
-      fullWidth 
-      className={btnClass}>
-        {ButtonChildren}
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        className="Popup-Menu"
-      >
-       {MenuChildren}
-      </Menu>
-    </div>
-  );
-}
-
-
-export const FollowUp = ({Image,SomeProp,name,idname,newClass}) =>{
-    return(
-        <>
-            <Avatar src={Image} alt="Name" className={`${newClass}-img`} />
-            <div className={`${newClass}-name--container`}>
-              <h4 className={`${newClass}-name`}>{name}</h4>
-              <h5 className={`${newClass}-idname`}>{idname}</h5>
-            </div>
-            {SomeProp}
-        </>
-    )
-}
 
 const WidgetsStyles = makeStyles((theme) => ({
   Widgetroot: {
@@ -205,7 +154,152 @@ export default function LabelBottomNavigation({IconSet}) {
   );
 }
 
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
 
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    maxWidth: 300,
+    maxHeight : 300,
+    gridGap :'0.5rem',
+    display : 'flex',
+    flexDirection: 'column',
+    alignContent : 'space-between',
+    justifyContent: 'space-between',
+    backgroundColor: theme.palette.background.paper,
+    borderRadius : '1rem',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline:'none'
+  },
+}));
+
+export const DeleteModal = React.memo(({Open,ModalClose,DeleteTweet}) => {
+  const classes = useStyles();
+  const [modalStyle] = React.useState(getModalStyle);
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <h2 id="simple-modal-title" style={{textAlign : 'center'}}>Delete Tweet?</h2>
+      <p id="simple-modal-description" style={{textAlign: 'center',color : 'gray',marginBottom : '0.5rem'}}>
+        This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results. 
+      </p>
+      <div style={{
+        display : 'flex',
+        gridGap : '1rem',
+        justifyContent : 'center'
+      }}>
+      <button
+      onClick={ModalClose} 
+      style={{
+          backgroundColor : '#EDEDED',
+          outline:'none',
+          border : 'none',
+          borderRadius : '30px',
+          padding : '0.5rem 2rem',
+          cursor : 'pointer'
+        }}>
+        <h3>Cancel</h3>
+      </button>
+      <button 
+      onClick={DeleteTweet} 
+      style={{
+          backgroundColor : '#EA3E62',
+          color : 'var(--twitter-bg-def)',
+          outline:'none',
+          border : 'none',
+          borderRadius : '30px',
+          padding : '0.5rem 2rem',
+          cursor : 'pointer'
+        }}>
+        <h3>Delete</h3>
+      </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{
+      display : 'none'
+    }}>
+      <Modal
+        open={Open}
+        onClose={ModalClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {body}
+      </Modal>
+    </div>
+  );
+})
+
+export const DrawerList={
+  ListA : [
+      {
+          Icon : <Profile />,
+          name :  'Profile'
+      },
+      {
+          Icon : <Lists />,
+          name : 'Lists'
+      },
+      {
+          Icon : <Topics />,
+          name : 'Topics'
+      },
+      {
+          Icon : <Bookmark />,
+          name : 'Bookmarks'
+      },
+      {
+          Icon : <Moments />,
+          name : 'Moments'
+      }
+  ],
+  ListB : [
+      {
+          Icon : <TwitterAds />,
+          name : 'Twitter Ads'
+      },
+      {
+          Icon : <Analytics />,
+          name : 'Analytics'
+      }
+  ],
+  ListC : [
+    {
+      Icon : <SettPriv />,
+      name : 'Settings and privacy'
+    },
+    {
+      Icon : <HelpCenter />,
+      name : 'Help Center'
+    }
+  ],
+  ListD : [
+    {
+      Icon : <DataSaver />,
+      name : 'Data Saver'
+    },
+    {
+      Icon : <Display />,
+      name : 'Display'
+    }
+  ]
+}
 
 export const useWindowResizer = () => {
   const [resize,setResize] = React.useState([window.innerWidth,window.innerHeight])

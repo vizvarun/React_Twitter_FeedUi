@@ -28,7 +28,6 @@ const Tweetbox = () => {
     const [tweet,setTweet] = React.useState('');
     const [tweetPhoto,setTweetPhoto] = React.useState('');
     const [writeTweet,setnewTweet] = React.useState(false);
-    const [twitterBlueOn,setTwitterBlue] = React.useState(false)
     const triggerRefInp = React.useRef(null);
     const iconRef = React.useRef(null);
     let TweetBox_icos = [];
@@ -47,18 +46,20 @@ const Tweetbox = () => {
       event.preventDefault();
       db.collection('Posts').add({
         posterName : 'Sayantan Samanta',
-        usernName:'icegeek_07',
+        userName:'icegeek_07',
         describe:tweet,
         postSrc:tweetPhoto,
         verified : false,
         uerAvatar : Accountpic
-      })
+      });
+      setTweet('');
+      setTweetPhoto('');
     }
+    console.log('Tweetbox is rendered')
     const sentenceChecker = (sentence) => {
       for(let i = 0; i<sentence.split(' ').length;i++)
       {
         if(sentence.split(' ')[i].startsWith('@') || sentence.split(' ')[i].startsWith('#')){
-          setTwitterBlue(true)
         }
       }
     }
@@ -72,7 +73,7 @@ const Tweetbox = () => {
           className="Tweet_Functions--icon"
           onClick={key === 'photo' ? () =>triggerRefInp.current.click(): null}
           >{Tweetbox_icons[key]}</div>)
-    }
+    }  
     return (
         <div className="Tweetbox">
             <form onSubmit={postHandler}>
@@ -100,7 +101,7 @@ const Tweetbox = () => {
                 {tweetPhoto ?
                   <div className="Tweetbox-upload">
                     <div className="Tweet-upload--close" onClick={() => {setTweetPhoto('')}}>
-                      <Close className="close" />
+                      <Close className="close" width="1rem"/>
                     </div>
                     <img src={tweetPhoto} alt="tweet-upload"/>
                   </div>: null}
@@ -118,5 +119,5 @@ const Tweetbox = () => {
     )
 }
 
-export default Tweetbox
+export default React.memo(Tweetbox)
 

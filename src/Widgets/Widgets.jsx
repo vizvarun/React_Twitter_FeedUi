@@ -1,19 +1,14 @@
 import React from 'react'
-import { Dropdown, SearchIcon } from './components/commons/Icons'
+import { Dropdown, SearchIcon } from '../components/commons/Icons'
 import './Widgets.css'
-import { WidgetContainer,Widget, WhomToFollow, useWindowResizer } from './components/commons/Ui'
-import db from './firebase/firebase.config'
+import { WidgetContainer,Widget, WhomToFollow } from '../components/commons/Ui'
+import db from '../firebase/firebase.config'
 const Widgets = () => {
     const [search,setSearch] = React.useState('');
     const InpRef = React.useRef(null);
-    const TriggerRef = React.useRef(null);
     const [WidgetNow,setWidget] = React.useState([]);
     const [wtfWidget,setWtfWidget] = React.useState([]);
-    React.useEffect(() =>{
-       if(TriggerRef.current.click()){
-           console.log("Hehe")
-       }
-    },[])
+    const [focus,setFocus] = React.useState(false)
     React.useEffect(() =>{
         db.collection('Widget').onSnapshot(snapShot =>{
             setWidget(snapShot.docs.map(each=> {
@@ -32,10 +27,17 @@ const Widgets = () => {
             }))
         })
     },[])
+    console.log('Widgets Rendered')
     const FooterCompos = ['Terms','Privacy Policy','Cookies','Add Info','More']
+    let WidgetClass = ['Widgets-inp'];
+    if(focus){
+        WidgetClass = ['Widgets-inp','focused'].join(' ');
+    }
     return (
         <div className="Widgets">
-            <div className="Widgets-inp" ref={InpRef}>
+            <div className={WidgetClass} 
+            ref={InpRef} 
+            onClick={() => setFocus(!focus)}>
                 <SearchIcon className="Widgets-search" />
                 <input 
                 className="Widgets-searchbar"
@@ -43,7 +45,6 @@ const Widgets = () => {
                 placeholder="Search Twitter"
                 onChange={(event) => {setSearch(event.target.value)}}
                 type="search"
-                ref={TriggerRef}
                 />
             </div>
             <WidgetContainer 

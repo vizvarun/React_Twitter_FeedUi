@@ -16,7 +16,6 @@
     border-bottom: 1px solid  var(--twitter-space-col);
     background-color: var(--twitter-bg-def);
     padding: 0.3rem 0;
-    border-bottom: 1px solid var(--twitter-space-coldark);
 }
 .Feed_header--container{
     display: flex;
@@ -48,5 +47,13 @@
         min-width: 20rem;
         position: relative;
         flex: 1;
+    }
+}
+
+@media only screen and (max-width : 550px){
+    .Feed_header .Feed_header--container{
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      grid-gap: 1rem;
     }
 }

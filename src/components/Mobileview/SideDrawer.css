@@ -1,0 +1,94 @@
+.Drawer-Structure{
+    width: 300px;
+    position: relative;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: 0px;
+}
+.Drawer-Structure::-webkit-scrollbar{
+    display: none;
+}
+.Drawer-Structure .SideDrawer-Header .SideDrawer-Header--container{
+    position: sticky;
+    top : 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--twitter-space-coldark);
+    align-items: center;
+}
+.Drawer-Structure .SideDrawer-Header .SideDrawer-Header--container .Close{
+    width : 1.5rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.Drawer-Structure .SideDrawer-Header .SideDrawer-Header--container .Close:hover{
+    background-color: var(--twitter-def-hover);
+}
+.Drawer-Structure .SideDrawer-Header .SideDrawer-Header--container .Close svg{
+    width : 1.5rem;
+    fill : var(--twitter-def-col)
+}
+.Drawer-Structure .SideDrawer-Header .SideDrawer-Header--container h2{
+    font-size: 1.2rem;
+}
+.Drawer-Structure .SideDrawer-Main svg{
+    width : 1.5rem;
+    fill: var(--twitter-def-col);
+    
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--Options svg{
+    width: 1.2rem;
+    fill : gray;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header{
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    padding: 0.5rem 1rem;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header .SideDrawer-Main--header_info{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.5rem;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header .SideDrawer-Main--header_info .Profile h3{
+    font-size: 0.9rem;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header .SideDrawer-Main--header_info .Profile h4{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color : gray;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header .SideDrawer-Main--header_info .Follow-count{
+    display: flex;
+    margin-top: 0.5rem;
+    grid-gap: 1rem;
+    font-size: 0.9rem;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header .SideDrawer-Main--header_info .Follow-count span{
+    font-weight: 400;
+    color : gray;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--header svg{
+    fill : var(--twitter-def-col);
+    border: 1px solid var(--twitter-def-col);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--Options {
+    display: flex;
+    flex-flow: column;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--Options .List-Section .Options{
+    display: flex;
+    padding: 1rem;
+    grid-column-gap: 0.7rem;
+}
+.Drawer-Structure .SideDrawer-Main .SideDrawer-Main--Options .List-Section .Options:hover{
+    background-color: var(--twitter-def-hover);
+}

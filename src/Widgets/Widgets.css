@@ -1,5 +1,5 @@
 .Widgets{
-    flex : 0.3;
+    flex : clamp(0.2,0.3,0.35);
     margin: 0 1rem;
     overflow-y: scroll;
     -ms-overflow-style : none;
@@ -18,9 +18,15 @@
     padding: 0.5rem;
     border-radius: 1rem;
 }
+.focused{
+    background-color: var(--twitter-bg-def);
+    border: 1px solid var(--twitter-def-col);
+    fill : var(--twitter-def-col);
+}
 .Widgets .Widgets-inp svg{
     width:1.1rem;
     margin: 0 0.5rem;
+    fill : gray;
 }
 .Widgets .Widgets-inp input{
     background-color: var(--twitter-space-col);

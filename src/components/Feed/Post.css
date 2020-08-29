@@ -15,11 +15,15 @@
 .Post .Post_body .Post_header .Post_headerText {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .Post .Post_body .Post_header .Post_headerText .Post_header--info{
     font-weight: 400;
     font-size: 1rem;
     color: grey;
+    flex: 1 0 auto;
+    font-size: 100%;
+    overflow-x: hidden;
 }
 .Post .Post_body .Post_header .Post_headerText .Post_header--info  .Post_header--info_timeStamps{
     margin: 0 0.3rem;
@@ -44,7 +48,6 @@
     padding: 0.15rem 0 0.3rem 0 ;
 }
 .Post .Post_body .Post_header .HashTags{
-    margin: 0.8rem 0 0.6rem 0;
     font-size: 0.9rem;
 }
 .Post .Post_body .Post_header .Post_headDesc p{
@@ -88,5 +91,14 @@
 @media only screen and (max-width: 700px){
     .Post .Post_body .Post_footer{
         width: 100%;
+    }
+    .Post .Post_body .Post_header .Post_headerText .Post_header--info{
+        font-size: 95%;
+    }
+    .Post .Post_body .Post_header .HashTags{
+        font-size: 95%;
+    }
+.Post .Post_body .Post_header .Post_headDesc p{
+    font-size: 95%;
     }
 }

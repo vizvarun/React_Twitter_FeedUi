@@ -1,7 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##Link
+# Link
 https://twitter-ui-clone-4172f.firebaseapp.com/
+
+# Used :
+1.Context Api
+2.Material UI
 
 ## Available Scripts
 
